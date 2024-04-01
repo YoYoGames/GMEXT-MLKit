@@ -11,7 +11,7 @@ IOS SOURCE: `source/MLKit_gml/extensions/MLKit/iOSSource`
 
 ## Requirements
 
-In order to use on iOS you will need cocapods installed in you system. If not present these are automatically installed when building application from the IDE or command line if you want to use your own custom installation of cocoapods make they are installed then correctly in `sudoless` mode and available through the command line.
+In order to use on iOS you will need cocapods installed in you system. If not present these are automatically installed when building the application from the IDE or command line if you wish to use your own custom installation of cocoapods then make they are installed then correctly in `sudoless` mode and available through the command line.
 
 ## Documentation
 
