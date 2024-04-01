@@ -5,7 +5,7 @@ This repository was created with the intent of presenting users with the latest 
 
 This extension will work on Android and iOS.
 
-ANDROID SOURCE: `source/extensions/MLKit/AndroidSource/Java`
+ANDROID SOURCE: `source/MLKit_gml/extensions/MLKit/AndroidSource/Java`
 
 IOS SOURCE: `source/MLKit_gml/extensions/MLKit/iOSSource`
 
