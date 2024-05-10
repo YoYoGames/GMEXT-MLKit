@@ -6,7 +6,7 @@
 
 ## DESCRIPTION
 
-ML Kit brings Google’s machine learning expertise to mobile developers in a powerful and easy-to-use package. Make your iOS and Android apps more engaging, personalized, and helpful with solutions that are optimized to run on device.
+ML Kit brings Google's machine learning expertise to mobile developers in a powerful and easy-to-use package. Make your iOS and Android apps more engaging, personalized, and helpful with solutions that are optimized to run on device.
 
 ## FEATURES
 
@@ -26,7 +26,3 @@ https://github.com/YoYoGames/GMEXT-MLKit/compare/${releaseOldVersion}...${releas
 ## DOCUMENTATION
 
 The full documentation of the API is included in the extension asset (included files).
-
-## NOTES
-
-For testing you just need to compile and run the project (it uses default Google Dummy AppID)
