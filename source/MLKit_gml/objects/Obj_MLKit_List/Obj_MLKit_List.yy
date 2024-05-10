@@ -1,0 +1,43 @@
+{
+  "$GMObject":"",
+  "%Name":"Obj_MLKit_List",
+  "eventList":[
+    {"$GMEvent":"","%Name":"","collisionObjectId":null,"eventNum":7,"eventType":6,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
+  "managed":true,
+  "name":"Obj_MLKit_List",
+  "overriddenProperties":[
+    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_gm_text","path":"objects/obj_gm_text/obj_gm_text.yy",},"propertyId":{"name":"text","path":"objects/obj_gm_text/obj_gm_text.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"List Packages",},
+  ],
+  "parent":{
+    "name":"Objects",
+    "path":"folders/MLKit Demo/Translate/Objects.yy",
+  },
+  "parentObjectId":{
+    "name":"obj_gm_button",
+    "path":"objects/obj_gm_button/obj_gm_button.yy",
+  },
+  "persistent":false,
+  "physicsAngularDamping":0.1,
+  "physicsDensity":0.5,
+  "physicsFriction":0.2,
+  "physicsGroup":1,
+  "physicsKinematic":false,
+  "physicsLinearDamping":0.1,
+  "physicsObject":false,
+  "physicsRestitution":0.1,
+  "physicsSensor":false,
+  "physicsShape":1,
+  "physicsShapePoints":[],
+  "physicsStartAwake":true,
+  "properties":[],
+  "resourceType":"GMObject",
+  "resourceVersion":"2.0",
+  "solid":false,
+  "spriteId":{
+    "name":"spr_gm_button",
+    "path":"sprites/spr_gm_button/spr_gm_button.yy",
+  },
+  "spriteMaskId":null,
+  "visible":true,
+}
