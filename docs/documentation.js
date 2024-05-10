@@ -3,13 +3,15 @@
 /**
  * @func mlkit_translation_create
  * @desc Creates a new translation unit.
+ * @returns {real}
  * @func_end
  */
 function mlkit_translation_create(source, target) {}
 
 /** 
  * @func mlkit_translation_model_is_available
- * @desc Try to install the language packages required for the translation model to work.
+ * @desc Try to install the language packages required for the translation model to work. This function returns the request ID.
+ * @returns {real}
  * 
  * @event social
  * @member {string} type The value `"mlkit_translation_model_is_available"`
@@ -23,8 +25,10 @@ function mlkit_translation_model_is_available() {}
 
 /** 
  * @func mlkit_translation_translate
- * @desc Translates the given input from the source language into the target language.
+ * @desc Requests the translation of the given input text. This function returns the request ID.
+ * @param {real} translation_unit The unique id of the translion unit to be used.
  * @param {string} text The text to be translated
+ * @returns {real}
  * 
  * @event social
  * @desc When a translation succeeds:
@@ -44,7 +48,7 @@ function mlkit_translation_model_is_available() {}
  * 
  * @func_end
  */
-function mlkit_translation_translate(text) {}
+function mlkit_translation_translate(translation_unit, text) {}
 
 /** 
  * @func mlkit_translation_close
@@ -60,7 +64,8 @@ function mlkit_translation_close(translation_unit) {}
 
 /** 
  * @func mlkit_translation_get_downloaded_list
- * @desc Requests the list of all currently downloaded translation models.
+ * @desc Requests the list of all currently downloaded translation models. This function returns the request ID.
+ * @returns {real}
  * 
  * @event social
  * @desc When the request succeeds:
@@ -82,8 +87,9 @@ function mlkit_translation_get_downloaded_list() {}
 
 /** 
  * @func mlkit_translation_model_delete
- * @desc Requests the deletion of the provided translation model.
+ * @desc Requests the deletion of the provided translation model. This function returns the request ID.
  * @param {string} language The language model to be deleted
+ * @returns {real}
  * 
  * @event social
  * @desc When the request succeeds:
@@ -105,8 +111,9 @@ function mlkit_translation_model_delete(language) {}
 
 /** 
  * @func mlkit_translation_model_download
- * @desc Requests the download of the provided translation model.
+ * @desc Requests the download of the provided translation model. This function returns the request ID.
  * @param {string} language The language model to be downloaded
+ * @returns {real}
  * 
  * @event social
  * @desc When the request succeeds:
