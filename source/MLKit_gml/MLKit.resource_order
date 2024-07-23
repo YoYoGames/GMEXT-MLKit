@@ -5,6 +5,7 @@
     {"name":"Objects","order":2,"path":"folders/GM Extensions Asset/Objects.yy",},
     {"name":"Rooms","order":3,"path":"folders/GM Extensions Asset/Rooms.yy",},
     {"name":"Sprites","order":4,"path":"folders/GM Extensions Asset/Sprites.yy",},
+    {"name":"MLKit Language Identification","order":20,"path":"folders/MLKit Language Identification.yy",},
     {"name":"MLKit Demo","order":19,"path":"folders/MLKit Demo.yy",},
     {"name":"Translate","order":2,"path":"folders/MLKit Demo/Translate.yy",},
     {"name":"Rooms","order":1,"path":"folders/MLKit Demo/Translate/Rooms.yy",},
@@ -13,6 +14,7 @@
   "ResourceOrderSettings":[
     {"name":"fnt_gm_20","order":1,"path":"fonts/fnt_gm_20/fnt_gm_20.yy",},
     {"name":"fnt_gm_30","order":2,"path":"fonts/fnt_gm_30/fnt_gm_30.yy",},
+    {"name":"MLKit_Language_Identification_Identify","order":1,"path":"objects/MLKit_Language_Identification_Identify/MLKit_Language_Identification_Identify.yy",},
     {"name":"obj_gm_text","order":1,"path":"objects/obj_gm_text/obj_gm_text.yy",},
     {"name":"obj_gm_textbox","order":2,"path":"objects/obj_gm_textbox/obj_gm_textbox.yy",},
     {"name":"Obj_MLKit_Delete","order":6,"path":"objects/Obj_MLKit_Delete/Obj_MLKit_Delete.yy",},
