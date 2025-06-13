@@ -3,7 +3,7 @@
   "%Name":"MLKit",
   "androidactivityinject":"",
   "androidclassname":"MLKit",
-  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.google.mlkit:translate:17.0.2'\r\n</YYAndroidGradleDependencies>",
+  "androidcodeinjection":"<YYAndroidGradleDependencies>\r\nimplementation 'com.google.mlkit:translate:17.0.2'\r\n</YYAndroidGradleDependencies>\r\n",
   "androidinject":"",
   "androidmanifestinject":"",
   "androidPermissions":[],
