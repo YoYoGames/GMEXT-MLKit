@@ -4,8 +4,8 @@
 const int EVENT_OTHER_SOCIAL = 70;
 extern int CreateDsMap( int _num, ... );
 extern void CreateAsynEventWithDSMap(int dsmapindex, int event_index);
-extern UIViewController *g_controller;
-extern UIView *g_glView;
+// extern UIViewController *g_controller;
+// extern UIView *g_glView;
 extern int g_DeviceWidth;
 extern int g_DeviceHeight;
 
