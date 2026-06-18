@@ -1,0 +1,23 @@
+[gml_api]
+module GMMLKit;
+
+[global, bind = typed_gml]
+function mlkit_translation_create(source: string, target: string): real;
+
+[global, bind = typed_gml]
+function mlkit_translation_model_is_available(translator: real, callback: func): unit;
+
+[global, bind = typed_gml]
+function mlkit_translation_translate(translator: real, text: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function mlkit_translation_close(translator: real): unit;
+
+[global, bind = typed_gml]
+function mlkit_translation_get_downloaded_list(callback: func): unit;
+
+[global, bind = typed_gml]
+function mlkit_translation_model_delete(language: string, callback: func): unit;
+
+[global, bind = typed_gml]
+function mlkit_translation_model_download(language: string, callback: func): unit;
