@@ -1,17 +1,27 @@
 # GMEXT-MLKit
-Repository for GameMaker's Machine Learning Extension
+Repository for GameMaker's ML Kit Extension
 
 This repository was created with the intent of presenting users with the latest version available of the extension (even previous to marketplace updates) and also provide a way for the community to contribute with bug fixes and feature implementation.
 
-This extension will work on Android and iOS.
+ML Kit brings Google's machine learning expertise to mobile developers in a powerful and easy-to-use package, with on-device APIs for text translation and language identification.
 
-ANDROID SOURCE: `source/MLKit_gml/extensions/MLKit/AndroidSource/Java`
+This extension will work on **Android** and **iOS**.
 
-IOS SOURCE: `source/MLKit_gml/extensions/MLKit/iOSSource`
+* Translation:
+  * Android: `source/MLKit_gml/extensions/GMMLKit/AndroidSource/Java/`
+  * iOS: `source/MLKit_gml/extensions/GMMLKit/source/src/ios/`
+* Language Identification:
+  * Android: `source/MLKit_gml/extensions/GMMLKitLanguageIdentification/AndroidSource/Java/`
+  * iOS: `source/MLKit_gml/extensions/GMMLKitLanguageIdentification/source/src/ios/`
 
 ## Requirements
 
-In order to use on iOS you will need cocapods installed in you system. If not present these are automatically installed when building the application from the IDE or command line if you wish to use your own custom installation of cocoapods then make they are installed then correctly in `sudoless` mode and available through the command line.
+This extension only runs on Android and iOS; on other platforms the functions are no-ops.
+
+Language models are downloaded on demand at runtime, so a network connection is required the first time a given translation model is used.
+
+> [!IMPORTANT]
+> To build for iOS you need CocoaPods installed on your system. If it is not present it is installed automatically when building from the IDE or command line. If you prefer to use your own installation of CocoaPods, make sure it is installed correctly in `sudoless` mode and available through the command line.
 
 ## Documentation
 
