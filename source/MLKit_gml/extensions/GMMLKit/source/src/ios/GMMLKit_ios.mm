@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <MLKitCommon/MLKitCommon.h>
 #import <MLKitTranslate/MLKitTranslate.h>
 
 #import "GMMLKit_ios.h"
