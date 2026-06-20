@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.common.model.RemoteModelManager;
+import com.google.mlkit.nl.translate.TranslateLanguage;
 import com.google.mlkit.nl.translate.TranslateRemoteModel;
 import com.google.mlkit.nl.translate.Translation;
 import com.google.mlkit.nl.translate.Translator;
@@ -31,9 +32,19 @@ public class GMMLKit extends GMMLKitInternal
 
     public double mlkit_translation_create(String source, String target)
     {
+        // Validate before building: setSourceLanguage/setTargetLanguage throw
+        // IllegalArgumentException on an unsupported tag, which would crash the
+        // app across JNI. fromLanguageTag returns null instead, so we can fail
+        // gracefully with an invalid (-1) handle, matching iOS.
+        String sourceLanguage = TranslateLanguage.fromLanguageTag(source);
+        String targetLanguage = TranslateLanguage.fromLanguageTag(target);
+
+        if (sourceLanguage == null || targetLanguage == null)
+            return -1.0;
+
         TranslatorOptions options = new TranslatorOptions.Builder()
-            .setSourceLanguage(source)
-            .setTargetLanguage(target)
+            .setSourceLanguage(sourceLanguage)
+            .setTargetLanguage(targetLanguage)
             .build();
 
         Translator translator = Translation.getClient(options);

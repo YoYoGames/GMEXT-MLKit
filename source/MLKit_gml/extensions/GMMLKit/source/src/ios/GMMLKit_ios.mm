@@ -26,15 +26,26 @@
 - (double)mlkit_translation_create:(std::string_view)source
                             target:(std::string_view)target
 {
-    NSString *sourceLanguage =
+    NSString *sourceTag =
         [[NSString alloc] initWithBytes:source.data()
                                 length:source.size()
                               encoding:NSUTF8StringEncoding];
 
-    NSString *targetLanguage =
+    NSString *targetTag =
         [[NSString alloc] initWithBytes:target.data()
                                 length:target.size()
                               encoding:NSUTF8StringEncoding];
+
+    // Validate before building so an unsupported tag returns an invalid (-1)
+    // handle instead of constructing a translator that fails later. Mirrors the
+    // Android fromLanguageTag null-check.
+    MLKTranslateLanguage sourceLanguage =
+        MLKTranslateLanguageForLanguageTag(sourceTag);
+    MLKTranslateLanguage targetLanguage =
+        MLKTranslateLanguageForLanguageTag(targetTag);
+
+    if (!sourceLanguage || !targetLanguage)
+        return -1;
 
     MLKTranslatorOptions *options =
         [[MLKTranslatorOptions alloc] initWithSourceLanguage:sourceLanguage
@@ -178,6 +189,19 @@
     MLKTranslateRemoteModel *model =
         [MLKTranslateRemoteModel translateRemoteModelWithLanguage:languageString];
 
+    MLKModelManager *modelManager = [MLKModelManager modelManager];
+
+    // Already present: report success immediately. downloadModel: otherwise
+    // performs an online version-check that can spuriously fail when offline
+    // even though the model is downloaded and usable.
+    if ([modelManager isModelDownloaded:model])
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callback.call(true, languageString.UTF8String ?: "", "");
+        });
+        return;
+    }
+
     MLKModelDownloadConditions *conditions =
         [[MLKModelDownloadConditions alloc]
             initWithAllowsCellularAccess:NO
@@ -190,6 +214,7 @@
 
     __block id successObserver = nil;
     __block id failureObserver = nil;
+    __weak __typeof__(self) weakSelf = self;
 
     void (^finish)(bool, NSString *) = ^(bool success, NSString *errorText)
     {
@@ -197,7 +222,7 @@
             callback.call(success,
                           languageString.UTF8String ?: "",
                           errorText.UTF8String ?: "");
-            [self removeDownloadObserversForKey:observerKey];
+            [weakSelf removeDownloadObserversForKey:observerKey];
         });
     };
 
@@ -228,7 +253,9 @@
         MLKTranslateRemoteModel *failedModel =
             note.userInfo[MLKModelDownloadUserInfoKeyRemoteModel];
 
-        if (failedModel &&
+        // Only handle our model. A nil or different model is some other
+        // download's failure — ignore it (mirrors the success observer).
+        if (![failedModel isKindOfClass:[MLKTranslateRemoteModel class]] ||
             ![failedModel.language isEqualToString:languageString])
         {
             return;
@@ -240,7 +267,7 @@
 
     _downloadObservers[observerKey] = @[successObserver, failureObserver];
 
-    [[MLKModelManager modelManager] downloadModel:model conditions:conditions];
+    [modelManager downloadModel:model conditions:conditions];
 }
 
 - (NSString *)keyForTranslator:(NSInteger)translatorId
