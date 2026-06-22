@@ -199,10 +199,11 @@ endif()
 # ============================================================
 # Objective-C ARC (Apple)
 # ============================================================
-# The Objective-C++ sources (hand-written src/ and generated code_gen/) are
-# written for ARC. Apply it to every .mm via the OBJCXX language selector so the
-# flag never reaches the C++ (.cpp) sources in this target.
+# Enable ARC for all .mm files, like GameMaker does by default.
+# (The build setting is for the Xcode generator; the compile option for Ninja/Make.)
 if(APPLE)
+  set_target_properties(${PROJECT_NAME} PROPERTIES
+    XCODE_ATTRIBUTE_CLANG_ENABLE_OBJC_ARC YES)
   target_compile_options(${PROJECT_NAME} PRIVATE
     $<$<COMPILE_LANGUAGE:OBJCXX>:-fobjc-arc>)
 endif()
