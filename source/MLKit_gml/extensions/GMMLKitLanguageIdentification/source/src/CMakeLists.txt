@@ -43,18 +43,3 @@ endif()
 
 target_sources(${PROJECT_NAME} PRIVATE ${TARGET_SRCS})
 target_include_directories(${PROJECT_NAME} PRIVATE "${SRC_DIR}")
-
-# The Objective-C++ sources are written for ARC. Enable it per-.mm so the flag
-# is never applied to the C++ (.cpp) sources in this target.
-# TARGET_DIRECTORY is required because the target is created in the parent
-# CMakeLists; source-file properties are directory-scoped, so without it the
-# flag set here (a subdirectory) would not reach the target's compile rules.
-if(APPLE)
-  foreach(_src IN LISTS TARGET_SRCS)
-    if(_src MATCHES "\\.mm$")
-      set_source_files_properties("${_src}"
-        TARGET_DIRECTORY ${PROJECT_NAME}
-        PROPERTIES COMPILE_FLAGS "-fobjc-arc")
-    endif()
-  endforeach()
-endif()

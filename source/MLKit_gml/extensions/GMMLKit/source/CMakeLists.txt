@@ -197,6 +197,17 @@ if(EXT_STRICT_WARNINGS)
 endif()
 
 # ============================================================
+# Objective-C ARC (Apple)
+# ============================================================
+# The Objective-C++ sources (hand-written src/ and generated code_gen/) are
+# written for ARC. Apply it to every .mm via the OBJCXX language selector so the
+# flag never reaches the C++ (.cpp) sources in this target.
+if(APPLE)
+  target_compile_options(${PROJECT_NAME} PRIVATE
+    $<$<COMPILE_LANGUAGE:OBJCXX>:-fobjc-arc>)
+endif()
+
+# ============================================================
 # third_party
 # ============================================================
 set(EXT_THIRDPARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
