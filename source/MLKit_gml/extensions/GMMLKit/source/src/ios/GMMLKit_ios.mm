@@ -37,19 +37,19 @@
                               encoding:NSUTF8StringEncoding];
 
     // Validate before building so an unsupported tag returns an invalid (-1)
-    // handle instead of constructing a translator that fails later. Mirrors the
-    // Android fromLanguageTag null-check.
-    MLKTranslateLanguage sourceLanguage =
-        MLKTranslateLanguageForLanguageTag(sourceTag);
-    MLKTranslateLanguage targetLanguage =
-        MLKTranslateLanguageForLanguageTag(targetTag);
-
-    if (!sourceLanguage || !targetLanguage)
+    // handle instead of constructing a translator that fails later. MLKit has
+    // no tag-conversion helper, so check membership in the supported set;
+    // mirrors the Android fromLanguageTag null-check.
+    NSSet<MLKTranslateLanguage> *supported = MLKTranslateAllLanguages();
+    if (![supported containsObject:sourceTag] ||
+        ![supported containsObject:targetTag])
+    {
         return -1;
+    }
 
     MLKTranslatorOptions *options =
-        [[MLKTranslatorOptions alloc] initWithSourceLanguage:sourceLanguage
-                                             targetLanguage:targetLanguage];
+        [[MLKTranslatorOptions alloc] initWithSourceLanguage:sourceTag
+                                             targetLanguage:targetTag];
 
     MLKTranslator *translator = [MLKTranslator translatorWithOptions:options];
 
