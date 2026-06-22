@@ -11,7 +11,7 @@
   "androidsourcedir":"",
   "author":"",
   "classname":"GMMLKitLanguageIdentification",
-  "copyToTargets":8,
+  "copyToTargets":12,
   "description":"",
   "exportToGame":true,
   "extensionVersion":"0.0.1",
