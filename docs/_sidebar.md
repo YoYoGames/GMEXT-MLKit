@@ -2,3 +2,4 @@
 * ### Modules
 
  * ${module.translation}
+ * ${module.language_identification}

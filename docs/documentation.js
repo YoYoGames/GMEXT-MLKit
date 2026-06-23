@@ -100,7 +100,7 @@ function mlkit_translation_close(translator) {}
  * @event callback
  * @desc Triggered when the request completes.
  * @member {Bool} success Whether the request succeeded.
- * @member {Array<String>} list An array of the downloaded models' language tags (empty on failure).
+ * @member {Array[String]} list An array of the downloaded models' language tags (empty on failure).
  * @member {String|Undefined} error The error message, or `undefined` if the request succeeded.
  * @event_end
  *
