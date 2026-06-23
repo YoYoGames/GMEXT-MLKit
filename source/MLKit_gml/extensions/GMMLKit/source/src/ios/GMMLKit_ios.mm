@@ -142,7 +142,7 @@
     for (MLKTranslateRemoteModel *model in models)
     {
         if (model.language)
-            languages.add(model.language.UTF8String ?: "");
+            languages.push(model.language.UTF8String ?: "");
     }
 
     callback.call(true, languages, "");
