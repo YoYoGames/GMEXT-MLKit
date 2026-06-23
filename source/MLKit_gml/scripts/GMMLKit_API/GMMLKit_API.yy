@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"GMMLKit_API",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"GMMLKit_API",
+  "parent":{
+    "name":"MLKit",
+    "path":"folders/MLKit.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

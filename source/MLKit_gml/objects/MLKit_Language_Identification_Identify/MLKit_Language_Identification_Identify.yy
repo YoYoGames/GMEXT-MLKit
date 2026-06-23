@@ -3,14 +3,13 @@
   "%Name":"MLKit_Language_Identification_Identify",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":70,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"MLKit_Language_Identification_Identify",
   "overriddenProperties":[],
   "parent":{
-    "name":"MLKit Language Identification",
-    "path":"folders/MLKit Language Identification.yy",
+    "name":"MLKit Language Identification Demo",
+    "path":"folders/MLKit Language Identification Demo.yy",
   },
   "parentObjectId":null,
   "persistent":false,

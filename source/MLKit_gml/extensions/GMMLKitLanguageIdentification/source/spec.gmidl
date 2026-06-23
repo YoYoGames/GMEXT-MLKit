@@ -1,0 +1,13 @@
+[gml_api]
+module GMMLKitLanguageIdentification;
+
+[global, bind = typed_gml]
+function mlkit_language_identification_identify(text: string, callback: func): unit;
+
+[global, bind = typed_gml]
+enum MLKitLanguageIdentificationStatus:int32
+{
+    Error = -1,
+    Undetermined = 0,
+    Identified = 1,
+}
