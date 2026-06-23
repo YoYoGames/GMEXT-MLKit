@@ -29,10 +29,12 @@ public class GMMLKitLanguageIdentification
         identifier.identifyLanguage(text)
             .addOnSuccessListener(languageCode ->
             {
+                // Omit the trailing error arg when there is no error; it
+                // arrives as undefined on the GML side.
                 if (UNDETERMINED.equals(languageCode))
-                    callback.call(STATUS_UNDETERMINED, UNDETERMINED, "");
+                    callback.call(STATUS_UNDETERMINED, UNDETERMINED);
                 else
-                    callback.call(STATUS_IDENTIFIED, languageCode, "");
+                    callback.call(STATUS_IDENTIFIED, languageCode);
 
                 identifier.close();
             })

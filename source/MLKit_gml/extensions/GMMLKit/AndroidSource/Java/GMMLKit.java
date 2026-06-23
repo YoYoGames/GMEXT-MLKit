@@ -67,7 +67,8 @@ public class GMMLKit extends GMMLKitInternal
 
         translator.downloadModelIfNeeded(conditions)
             .addOnSuccessListener(unused ->
-                callback.call(true, translatorId, ""))
+                // Omit the trailing error arg on success; it arrives as undefined.
+                callback.call(true, translatorId))
             .addOnFailureListener(error ->
                 callback.call(false, translatorId, message(error)));
     }
@@ -86,7 +87,7 @@ public class GMMLKit extends GMMLKitInternal
 
         translator.translate(text)
             .addOnSuccessListener(translatedText ->
-                callback.call(true, translatorId, translatedText, ""))
+                callback.call(true, translatorId, translatedText))
             .addOnFailureListener(error ->
                 callback.call(false, translatorId, "", message(error)));
     }
@@ -103,7 +104,7 @@ public class GMMLKit extends GMMLKitInternal
         RemoteModelManager.getInstance()
             .getDownloadedModels(TranslateRemoteModel.class)
             .addOnSuccessListener(models ->
-                callback.call(true, modelsToArray(models), ""))
+                callback.call(true, modelsToArray(models)))
             .addOnFailureListener(error ->
                 // Known-empty result: a tiny header-only buffer is enough.
                 callback.call(false, new GMExtWire.ArrayStream(16), message(error)));
@@ -119,7 +120,7 @@ public class GMMLKit extends GMMLKitInternal
         RemoteModelManager.getInstance()
             .deleteDownloadedModel(model)
             .addOnSuccessListener(unused ->
-                callback.call(true, language, ""))
+                callback.call(true, language))
             .addOnFailureListener(error ->
                 callback.call(false, language, message(error)));
     }
@@ -137,7 +138,7 @@ public class GMMLKit extends GMMLKitInternal
         RemoteModelManager.getInstance()
             .download(model, conditions)
             .addOnSuccessListener(unused ->
-                callback.call(true, language, ""))
+                callback.call(true, language))
             .addOnFailureListener(error ->
                 callback.call(false, language, message(error)));
     }

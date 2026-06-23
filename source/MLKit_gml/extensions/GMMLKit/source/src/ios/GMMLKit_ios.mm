@@ -83,7 +83,8 @@
                 callback.call(false, translatorId,
                               error.localizedDescription.UTF8String ?: "");
             else
-                callback.call(true, translatorId, "");
+                // Omit the trailing error arg on success; it arrives as undefined.
+                callback.call(true, translatorId);
         });
     }];
 }
@@ -119,7 +120,7 @@
             else
             {
                 callback.call(true, translatorId,
-                              translatedText.UTF8String ?: "", "");
+                              translatedText.UTF8String ?: "");
             }
         });
     }];
@@ -146,7 +147,7 @@
             languages.push(std::string_view(model.language.UTF8String ?: ""));
     }
 
-    callback.call(true, languages, "");
+    callback.call(true, languages);
 }
 
 - (void)mlkit_translation_model_delete:(std::string_view)language
@@ -168,7 +169,7 @@
                 callback.call(false, languageString.UTF8String ?: "",
                               error.localizedDescription.UTF8String ?: "");
             else
-                callback.call(true, languageString.UTF8String ?: "", "");
+                callback.call(true, languageString.UTF8String ?: "");
         });
     }];
 }
@@ -192,7 +193,7 @@
     if ([modelManager isModelDownloaded:model])
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback.call(true, languageString.UTF8String ?: "", "");
+            callback.call(true, languageString.UTF8String ?: "");
         });
         return;
     }
@@ -214,9 +215,12 @@
     void (^finish)(bool, NSString *) = ^(bool success, NSString *errorText)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            callback.call(success,
-                          languageString.UTF8String ?: "",
-                          errorText.UTF8String ?: "");
+            if (success)
+                // Omit the trailing error arg on success; it arrives as undefined.
+                callback.call(true, languageString.UTF8String ?: "");
+            else
+                callback.call(false, languageString.UTF8String ?: "",
+                              errorText.UTF8String ?: "");
             [weakSelf removeDownloadObserversForKey:observerKey];
         });
     };

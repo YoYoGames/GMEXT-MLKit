@@ -33,7 +33,7 @@ mlkit_translation_model_download(
         var _message =
             "Download " + _language + ": " + _result;
 
-        if (!_success && _error != "")
+        if (!_success && !is_undefined(_error))
         {
             _message += "\n" + _error;
         }

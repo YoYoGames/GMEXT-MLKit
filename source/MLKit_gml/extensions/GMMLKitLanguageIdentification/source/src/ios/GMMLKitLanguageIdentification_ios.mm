@@ -40,14 +40,15 @@ namespace
             else if (!languageCode ||
                      [languageCode isEqualToString:@"und"])
             {
-                callback.call(kStatusUndetermined, "und", "");
+                // Omit the trailing error arg when there is no error; it
+                // arrives as undefined on the GML side.
+                callback.call(kStatusUndetermined, "und");
             }
             else
             {
                 callback.call(
                     kStatusIdentified,
-                    languageCode.UTF8String ?: "und",
-                    "");
+                    languageCode.UTF8String ?: "und");
             }
         });
     }];
