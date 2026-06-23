@@ -142,7 +142,7 @@
     for (MLKTranslateRemoteModel *model in models)
     {
         if (model.language)
-            languages.push(model.language.UTF8String ?: "");
+            languages.push(std::string_view(model.language.UTF8String ?: ""));
     }
 
     callback.call(true, languages, "");
