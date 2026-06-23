@@ -1,4 +1,10 @@
 
+if (os_type != os_android && os_type != os_ios)
+{
+    show_message_async("ML Kit is only available on Android and iOS.");
+    exit;
+}
+
 mlkit_translation_get_downloaded_list(
     function(_success, _list, _error)
     {

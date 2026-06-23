@@ -1,4 +1,10 @@
 
+if (os_type != os_android && os_type != os_ios)
+{
+    show_message_async("ML Kit is only available on Android and iOS.");
+    exit;
+}
+
 mlkit_language_identification_identify(
     "to be or not to be, that's the question.",
     function(_status, _language_code, _error)

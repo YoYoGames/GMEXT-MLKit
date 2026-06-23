@@ -137,7 +137,8 @@
     NSSet<MLKTranslateRemoteModel *> *models =
         [MLKModelManager modelManager].downloadedTranslateModels;
 
-    gm::wire::ArrayStream languages(4096);
+    // Default capacity; the buffer grows as languages are appended.
+    gm::wire::ArrayStream languages;
 
     for (MLKTranslateRemoteModel *model in models)
     {

@@ -30,7 +30,7 @@
   "installdir":"",
   "iosCocoaPodDependencies":"",
   "iosCocoaPods":"",
-  "ioscodeinjection":"<YYIosCocoaPods>\r\npod 'GoogleMLKit/Translate', '3.2.0'\r\npod 'GoogleMLKit/LanguageID', '3.2.0'\r\n</YYIosCocoaPods>",
+  "ioscodeinjection":"<YYIosCocoaPods>\r\npod 'GoogleMLKit/LanguageID', '3.2.0'\r\n</YYIosCocoaPods>",
   "iosdelegatename":"",
   "iosplistinject":null,
   "iosProps":true,

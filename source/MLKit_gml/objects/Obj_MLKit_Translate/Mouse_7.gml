@@ -1,4 +1,10 @@
 
+if (os_type != os_android && os_type != os_ios)
+{
+    show_message_async("ML Kit is only available on Android and iOS.");
+    exit;
+}
+
 translator = mlkit_translation_create(
     Obj_MLKit_Language_Source.text,
     Obj_MLKit_Language_Target.text

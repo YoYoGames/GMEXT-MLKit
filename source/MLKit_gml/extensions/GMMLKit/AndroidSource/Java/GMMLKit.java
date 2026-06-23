@@ -105,7 +105,8 @@ public class GMMLKit extends GMMLKitInternal
             .addOnSuccessListener(models ->
                 callback.call(true, modelsToArray(models), ""))
             .addOnFailureListener(error ->
-                callback.call(false, emptyArray(), message(error)));
+                // Known-empty result: a tiny header-only buffer is enough.
+                callback.call(false, new GMExtWire.ArrayStream(16), message(error)));
     }
 
     public void mlkit_translation_model_delete(
@@ -155,15 +156,11 @@ public class GMMLKit extends GMMLKitInternal
         return value != null ? value : error.toString();
     }
 
-    private static GMExtWire.ArrayStream emptyArray()
-    {
-        return new GMExtWire.ArrayStream(4096);
-    }
-
     private static GMExtWire.ArrayStream modelsToArray(
         Set<TranslateRemoteModel> models)
     {
-        GMExtWire.ArrayStream languages = emptyArray();
+        // Default capacity; the buffer grows as languages are appended.
+        GMExtWire.ArrayStream languages = new GMExtWire.ArrayStream();
 
         if (models == null)
             return languages;
