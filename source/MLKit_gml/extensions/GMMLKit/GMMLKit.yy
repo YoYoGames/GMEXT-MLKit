@@ -46,7 +46,7 @@
   ],
   "license":"",
   "maccompilerflags":"",
-  "maclinkerflags":"\"-ObjC\" -ObjC",
+  "maclinkerflags":"\"-ObjC\"",
   "macsourcedir":"",
   "name":"GMMLKit",
   "options":[],
