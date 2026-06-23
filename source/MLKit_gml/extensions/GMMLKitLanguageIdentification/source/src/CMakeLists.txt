@@ -3,7 +3,13 @@ set(SRC_DIR ${CMAKE_CURRENT_LIST_DIR})
 # =============================================================================
 # GameMaker iOS integration (optional)
 # =============================================================================
-set(EXT_GM_XCODEPROJ_OVERRIDE "~/GameMakerStudio2/GM_IOS/MLKit/MLKit/MLKit.xcodeproj" CACHE STRING "" FORCE)
+# Home-relative path is allowed; CMake does not expand a leading ~ on its own,
+# so expand it to $ENV{HOME} before publishing the cache value.
+set(_EXT_GM_XCODEPROJ_RAW "~/GameMakerStudio2/GM_IOS/MLKit/MLKit/MLKit.xcodeproj")
+if(_EXT_GM_XCODEPROJ_RAW MATCHES "^~")
+  string(REGEX REPLACE "^~" "$ENV{HOME}" _EXT_GM_XCODEPROJ_RAW "${_EXT_GM_XCODEPROJ_RAW}")
+endif()
+set(EXT_GM_XCODEPROJ_OVERRIDE "${_EXT_GM_XCODEPROJ_RAW}" CACHE STRING "" FORCE)
 set(EXT_GM_APP_TARGET_OVERRIDE "" CACHE STRING "" FORCE)
 
 # =============================================================================
