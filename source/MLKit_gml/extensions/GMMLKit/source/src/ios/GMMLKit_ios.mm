@@ -137,21 +137,15 @@
     NSSet<MLKTranslateRemoteModel *> *models =
         [MLKModelManager modelManager].downloadedTranslateModels;
 
-    NSMutableArray<NSString *> *languages = [NSMutableArray array];
+    gm::wire::ArrayStream languages(4096);
+
     for (MLKTranslateRemoteModel *model in models)
     {
         if (model.language)
-            [languages addObject:model.language];
+            languages.add(model.language.UTF8String ?: "");
     }
 
-    NSData *data = [NSJSONSerialization dataWithJSONObject:languages
-                                                   options:0
-                                                     error:nil];
-    NSString *json = data
-        ? [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]
-        : @"[]";
-
-    callback.call(true, json.UTF8String ?: "[]", "");
+    callback.call(true, languages, "");
 }
 
 - (void)mlkit_translation_model_delete:(std::string_view)language

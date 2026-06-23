@@ -1,13 +1,8 @@
 package ${YYAndroidPackageName};
 
-import ${YYAndroidPackageName}.GMExtUtils;
+import ${YYAndroidPackageName}.GMExtWire;
 import ${YYAndroidPackageName}.GMExtWire.GMFunction;
-import ${YYAndroidPackageName}.enums.*;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.mlkit.common.model.DownloadConditions;
 import com.google.mlkit.common.model.RemoteModelManager;
 import com.google.mlkit.nl.translate.TranslateLanguage;
@@ -24,6 +19,9 @@ import java.util.Set;
  *
  * GMFunction is supplied by the generated Android binding.
  * All former Social Async events are returned through callback.call(...).
+ *
+ * Structured arrays are returned through GMExtWire.ArrayStream instead of
+ * JSON strings.
  */
 public class GMMLKit extends GMMLKitInternal
 {
@@ -105,9 +103,9 @@ public class GMMLKit extends GMMLKitInternal
         RemoteModelManager.getInstance()
             .getDownloadedModels(TranslateRemoteModel.class)
             .addOnSuccessListener(models ->
-                callback.call(true, modelsToJson(models), ""))
+                callback.call(true, modelsToArray(models), ""))
             .addOnFailureListener(error ->
-                callback.call(false, "[]", message(error)));
+                callback.call(false, emptyArray(), message(error)));
     }
 
     public void mlkit_translation_model_delete(
@@ -150,37 +148,37 @@ public class GMMLKit extends GMMLKitInternal
 
     private static String message(Exception error)
     {
+        if (error == null)
+            return "Unknown ML Kit error.";
+
         String value = error.getMessage();
         return value != null ? value : error.toString();
     }
 
-    private static String modelsToJson(Set<TranslateRemoteModel> models)
+    private static GMExtWire.ArrayStream emptyArray()
     {
-        StringBuilder json = new StringBuilder("[");
-        boolean first = true;
+        return new GMExtWire.ArrayStream(4096);
+    }
+
+    private static GMExtWire.ArrayStream modelsToArray(
+        Set<TranslateRemoteModel> models)
+    {
+        GMExtWire.ArrayStream languages = emptyArray();
+
+        if (models == null)
+            return languages;
 
         for (TranslateRemoteModel model : models)
         {
-            if (!first)
-                json.append(',');
+            if (model == null)
+                continue;
 
-            json.append('"')
-                .append(escapeJson(model.getLanguage()))
-                .append('"');
+            String language = model.getLanguage();
 
-            first = false;
+            if (language != null)
+                languages.add(language);
         }
 
-        return json.append(']').toString();
-    }
-
-    private static String escapeJson(String value)
-    {
-        if (value == null)
-            return "";
-
-        return value
-            .replace("\\", "\\\\")
-            .replace("\"", "\\\"");
+        return languages;
     }
 }
