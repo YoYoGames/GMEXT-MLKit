@@ -14,7 +14,7 @@
   "copyToTargets":12,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"0.0.1",
+  "extensionVersion":"1.0.0",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":-1,"filename":"GMMLKitLanguageIdentification.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"__mlkit_language_identification_identify","argCount":2,"args":[1,2,],"documentation":"@param {Pointer} _arg_buffer\r\n@param {Real} _arg_buffer_length\r\n@returns {Real}","externalName":"__EXT_NATIVE__mlkit_language_identification_identify","help":"","hidden":true,"kind":4,"name":"__mlkit_language_identification_identify","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

@@ -14,7 +14,7 @@
   "copyToTargets":12,
   "description":"",
   "exportToGame":true,
-  "extensionVersion":"0.0.1",
+  "extensionVersion":"2.0.0",
   "files":[
     {"$GMExtensionFile":"v1","%Name":"","constants":[],"copyToTargets":12,"filename":"GMMLKit.ext","final":"","functions":[
         {"$GMExtensionFunction":"","%Name":"mlkit_translation_create","argCount":2,"args":[1,1,],"documentation":"@param {String} source\r\n@param {String} target\r\n@returns {Real}","externalName":"__EXT_NATIVE__mlkit_translation_create","help":"","hidden":false,"kind":4,"name":"mlkit_translation_create","resourceType":"GMExtensionFunction","resourceVersion":"2.0","returnType":2,},

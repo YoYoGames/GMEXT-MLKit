@@ -26,12 +26,12 @@
   ],
   "ForcedPrefabProjectReferences":[],
   "IncludedFiles":[
-    {"$GMIncludedFile":"","%Name":"GMEXT-MLKit.html","CopyToMask":-1,"filePath":"datafiles","name":"GMEXT-MLKit.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
+    {"$GMIncludedFile":"","%Name":"GMEXT-MLKit.html","CopyToMask":0,"filePath":"datafiles","name":"GMEXT-MLKit.html","resourceType":"GMIncludedFile","resourceVersion":"2.0",},
   ],
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.4.222",
+    "IDEVersion":"2026.100.0.1074",
   },
   "name":"MLKit",
   "resources":[
